@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/server.ts",
+    "dev": "nodemon",
+    "worker": "tsx src/main-worker.ts",
+    "dev:worker": "nodemon --exec tsx src/main-worker.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "migrate": "tsx src/shared/migrate-cli.ts"
   },
   "repository": {
     "type": "git",
@@ -23,13 +26,14 @@
   "dependencies": {
     "dotenv": "^18.0.5",
     "express": "^5.2.1",
-    "pg": "^8.23.1",
-    "redis": "^6.3.0"
+    "ioredis": "^6.0.0",
+    "pg": "^8.23.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.4",
     "@types/pg": "^8.23.1",
+    "nodemon": "^3.1.14",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   },
