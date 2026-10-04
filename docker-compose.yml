@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: seekq-postgres
+    environment:
+      POSTGRES_USER: seekq
+      POSTGRES_PASSWORD: seekq_dev_password
+      POSTGRES_DB: seekq
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: seekq-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
